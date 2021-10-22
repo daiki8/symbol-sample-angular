@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'symbol-sample-angular';
+  sideNavLinks = [
+    {
+      name: 'Home',
+      icon: 'home',
+      linkPath: '/'
+    },
+    {
+      name: 'Account',
+      icon: 'account_circle',
+      linkPath: '/explorer/accounts/NDLXI3OMXJCHO2A2ZD54TO4UZJQQV36DQYK33SA'
+    },
+  ];
 }

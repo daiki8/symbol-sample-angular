@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true,
+  nodeUrl: 'http://symbol-sakura-16.next-web-technology.com:3000',
 };
 
 /*

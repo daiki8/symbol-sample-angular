@@ -1,0 +1,48 @@
+<ng-container *ngIf="account$ | async as account">
+  <mat-card>
+    <mat-card-header>
+      Address
+    </mat-card-header>
+    <mat-card-content>
+      {{account.address}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      Public Key
+    </mat-card-header>
+    <mat-card-content>
+      {{account.publicKey}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      Mosaics
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutGap="12px">
+        <div fxLayout="column">
+          <div>Id</div>
+          <ng-container *ngFor="let mosaic of account.mosaics">
+            <div>{{mosaic.id}}</div>
+          </ng-container>
+        </div>
+        <div fxLayout="column">
+          <div>Amount</div>
+          <ng-container *ngFor="let mosaic of account.mosaics">
+            <div>{{mosaic.amount}}</div>
+          </ng-container>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      Importance
+    </mat-card-header>
+    <mat-card-content>
+      {{account.importanceMicroXym}}
+    </mat-card-content>
+  </mat-card>
+
+</ng-container>
