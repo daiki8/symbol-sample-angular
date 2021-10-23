@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  nodeUrl: 'http://symbol-sakura-16.next-web-technology.com:3000',
+  production: false,
+  // nodeUrl: 'http://symbol-sakura-16.next-web-technology.com:3000', // mainnet
+  nodeUrl: 'https://sym-test.opening-line.jp:3001',                   // testnet
 };
 
 /*
