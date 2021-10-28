@@ -19,6 +19,7 @@ export class AccountInfrastructureService implements InterfaceAccountInfrastruct
   constructor() { }
 
   getAccount$(address: string): Observable<Account> {
+    const test = symbolSdk.Account.generateNewAccount(symbolSdk.NetworkType.TEST_NET);
     const symbolSdkAddress = symbolSdk.Address.createFromRawAddress(address);
     this.accountInfo$ = this.accountHttp.getAccountInfo(symbolSdkAddress);
     this.account$ = this.accountInfo$.pipe(
