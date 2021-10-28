@@ -9,8 +9,8 @@ export class AppComponent {
   title = 'symbol-sample-angular';
   sideNavLinks = [
     {
-      name: 'Home',
-      icon: 'home',
+      name: 'Wallet',
+      icon: 'account_balance_wallet',
       linkPath: '/'
     },
     {

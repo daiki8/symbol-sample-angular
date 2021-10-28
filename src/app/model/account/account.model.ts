@@ -7,3 +7,9 @@ export type Account = {
   }[];
   importanceMicroXym: bigint;
 }
+
+export type Wallet = {
+  address: string;
+  publicKey: string;
+  privateKey: string;
+}

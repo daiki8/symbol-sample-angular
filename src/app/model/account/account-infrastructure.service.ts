@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as symbolSdk from 'symbol-sdk';
 import { environment } from 'src/environments/environment';
-import { Account } from './account.model';
+import { Account, Wallet } from './account.model';
 import { InterfaceAccountInfrastructureService } from './account.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -15,11 +15,11 @@ export class AccountInfrastructureService implements InterfaceAccountInfrastruct
   private accountHttp = this.repositoryFactoryHttp.createAccountRepository();
   private accountInfo$?: Observable<symbolSdk.AccountInfo>;
   private account$?: Observable<Account>;
+  private wallet?: Wallet;
 
   constructor() { }
 
   getAccount$(address: string): Observable<Account> {
-    const test = symbolSdk.Account.generateNewAccount(symbolSdk.NetworkType.TEST_NET);
     const symbolSdkAddress = symbolSdk.Address.createFromRawAddress(address);
     this.accountInfo$ = this.accountHttp.getAccountInfo(symbolSdkAddress);
     this.account$ = this.accountInfo$.pipe(
@@ -39,5 +39,14 @@ export class AccountInfrastructureService implements InterfaceAccountInfrastruct
       })
     );
     return this.account$;
+  }
+
+  createWallet(): Wallet {
+    const newWallet = symbolSdk.Account.generateNewAccount(symbolSdk.NetworkType.TEST_NET);
+    return {
+      address: newWallet.address.pretty(),
+      publicKey: newWallet.publicKey,
+      privateKey: newWallet.privateKey
+    };
   }
 }

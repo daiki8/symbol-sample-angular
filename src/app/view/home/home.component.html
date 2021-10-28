@@ -1,8 +1,26 @@
-<mat-card>
-  <mat-card-header>
-    <h2>Home</h2>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Angularでのsymbol-sdkの使い方を説明するためのアプリです。!</p>
-  </mat-card-content>
-</mat-card>
+<ng-container *ngIf="wallet">
+  <mat-card>
+    <mat-card-header>
+      Address
+    </mat-card-header>
+    <mat-card-content>
+      {{wallet.address}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      Public Key
+    </mat-card-header>
+    <mat-card-content>
+      {{wallet.publicKey}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      Private Key
+    </mat-card-header>
+    <mat-card-content>
+      {{wallet.privateKey}}
+    </mat-card-content>
+  </mat-card>
+</ng-container>
