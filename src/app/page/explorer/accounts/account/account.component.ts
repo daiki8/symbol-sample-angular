@@ -12,27 +12,14 @@ import { AccountService } from 'src/app/model/account/account.service';
 })
 export class AccountComponent implements OnInit {
   address$?: Observable<string>;
-  address?: string;
   account$?: Observable<Account>;
-  account?: Account;
-
+  
   constructor(private route: ActivatedRoute, private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.address$ = this.route.params.pipe(map((params) => params.address));
-    this.address$.subscribe(
-      (address) => {
-        console.log("address", address);
-        this.address = address;
-      }
-    );
-    this.account$ = this.address$.pipe(mergeMap((address)=> this.accountService.getAccount$(address)));
-    this.account$.subscribe(
-      (account) => {
-        console.log("account", account);
-        this.account = account;
-      }
-    )
+    this.account$ = this.address$.pipe(mergeMap((address): Observable<Account> => {
+      return this.accountService.getAccount$(address);
+    }));
   }
-
 }
