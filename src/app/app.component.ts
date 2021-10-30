@@ -16,7 +16,12 @@ export class AppComponent {
     {
       name: 'Account',
       icon: 'account_circle',
-      linkPath: '/explorer/accounts/TCE654D7MCEZHRCH3B4N4YGTJUXWK6KPZIWRGZY'
+      linkPath: '/explorer/accounts/TDYBWQAYDAXJQVLABUFYIPMENZNQYD5B3QCPHAA'
+    },
+    {
+      name: 'Send',
+      icon: 'account_circle',
+      linkPath: '/transfer'
     },
   ];
 }

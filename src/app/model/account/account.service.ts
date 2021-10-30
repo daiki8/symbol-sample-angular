@@ -11,6 +11,7 @@ export interface InterfaceAccountInfrastructureService {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AccountService {
   private account$?: Observable<Account>;
   constructor(private accountInfrastructureService: AccountInfrastructureService) {}

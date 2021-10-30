@@ -16,7 +16,9 @@ import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './page/home/home.component';
 import { ViewHomeComponent } from './view/home/home.component';
 import { AccountComponent } from './page/explorer/accounts/account/account.component'; 
-import { ViewAccountComponent } from './view/explorer/accounts/account/account.component'; 
+import { ViewAccountComponent } from './view/explorer/accounts/account/account.component';
+import { TransferComponent } from './page/transfer/transfer.component'; 
+import { ViewTransferComponent } from './view/transfer/transfer.component'; 
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ViewAccountComponent } from './view/explorer/accounts/account/account.c
     ViewHomeComponent,
     AccountComponent,
     ViewAccountComponent,
+    TransferComponent,
+    ViewTransferComponent,
   ],
   imports: [
     BrowserModule,
