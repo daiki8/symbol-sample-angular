@@ -24,7 +24,7 @@ export class TransferService {
   private networkGenerationHash = '3B5E1FA6445653C971A50687E75E6D09FB30481055E3990C84B25E9222DC1155'
   private epochAdjustment = 1616694977;
   
-  async sendTransaction() {
+  async sendTransaction(targetAddress: string, message: string) {
     console.log('send Transaction');
 
     const repoFactory = new symbolSdk.RepositoryFactoryHttp(this.nodeUrl, {
@@ -34,13 +34,14 @@ export class TransferService {
     
     const senderPrivateKey = environment.samplePrivateKey;
     const senderAccount = symbolSdk.Account.createFromPrivateKey(senderPrivateKey, this.networkType);
-    const targetAddress = environment.sampleTargetAddress;
+    // const targetAddress = environment.sampleTargetAddress;
+    // const message = 'hello symbol';
 
     const transferTransaction = symbolSdk.TransferTransaction.create(
       symbolSdk.Deadline.create(this.epochAdjustment),
       symbolSdk.Address.createFromRawAddress(targetAddress),
       [symbolSdk.NetworkCurrencies.PUBLIC.currency.createRelative(1)],
-      symbolSdk.PlainMessage.create('hello symbol'),
+      symbolSdk.PlainMessage.create(message),
       this.networkType,
     ).setMaxFee(110);
   
