@@ -20,7 +20,7 @@ export class AppComponent {
     },
     {
       name: 'Send',
-      icon: 'account_circle',
+      icon: 'send',
       linkPath: '/transfer'
     },
   ];
