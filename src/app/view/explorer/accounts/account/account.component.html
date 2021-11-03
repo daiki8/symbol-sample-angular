@@ -1,48 +1,42 @@
-<ng-container *ngIf="account$ | async as account">
-  <mat-card>
-    <mat-card-header>
-      Address
-    </mat-card-header>
-    <mat-card-content>
-      {{account.address}}
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-header>
-      Public Key
-    </mat-card-header>
-    <mat-card-content>
-      {{account.publicKey}}
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-header>
-      Mosaics
-    </mat-card-header>
-    <mat-card-content>
-      <div fxLayout="row" fxLayoutGap="12px">
-        <div fxLayout="column">
-          <div>Id</div>
-          <ng-container *ngFor="let mosaic of account.mosaics">
-            <div>{{mosaic.id}}</div>
-          </ng-container>
-        </div>
-        <div fxLayout="column">
-          <div>Amount</div>
-          <ng-container *ngFor="let mosaic of account.mosaics">
-            <div>{{mosaic.amount}}</div>
-          </ng-container>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-header>
-      Importance
-    </mat-card-header>
-    <mat-card-content>
-      {{account.importanceMicroXym}}
-    </mat-card-content>
-  </mat-card>
 
-</ng-container>
+  <div fxLayout="row" fxLayoutGap="12px">
+    <mat-card fxFlex="30">
+      <mat-card-header>
+        MyAccounts
+      </mat-card-header>
+    </mat-card>
+    <mat-card  *ngIf="account$ | async as account" fxFlex="70">
+      <mat-card-header>
+        Account Information
+      </mat-card-header>
+      <mat-card-content fxLayout="row">
+        <mat-list>
+          <mat-list-item>Address:</mat-list-item>
+          <mat-list-item>Public Key:</mat-list-item>
+          <mat-list-item>Importance:</mat-list-item>
+          <mat-list-item>Mosaics:</mat-list-item>
+        </mat-list>
+        <mat-list>
+          <mat-list-item>{{account.address}}</mat-list-item>
+          <mat-list-item>{{account.publicKey}}</mat-list-item>
+          <mat-list-item>{{account.importanceMicroXym}}</mat-list-item>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutGap="12px">
+              <div fxLayout="column">
+                <div>Id</div>
+                <ng-container *ngFor="let mosaic of account.mosaics">
+                  <div>{{mosaic.id}}</div>
+                </ng-container>
+              </div>
+              <div fxLayout="column">
+                <div>Amount</div>
+                <ng-container *ngFor="let mosaic of account.mosaics">
+                  <div>{{mosaic.amount}}</div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
