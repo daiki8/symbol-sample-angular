@@ -9,7 +9,7 @@ import { Transfer } from 'src/app/model/transaction/transfer/transfer.model';
   styleUrls: ['./transfer.component.css']
 })
 export class ViewTransferComponent implements OnInit {
-  transfer: Transfer = { address: environment.sampleTargetAddress, message: '' };
+  transfer: Transfer = { address: environment.sampleTargetAddress, message: '', amount: 1 };
   @Output() send = new EventEmitter<Transfer>();
 
   constructor() { }
@@ -20,7 +20,8 @@ export class ViewTransferComponent implements OnInit {
   onSubmit() {
     this.send.emit({
       address: this.transfer.address,
-      message: this.transfer.message
+      message: this.transfer.message,
+      amount: this.transfer.amount,
     });
   }
 

@@ -26,7 +26,7 @@ export class TransferComponent implements OnInit {
     console.log('send transfer');
     console.log(transfer.address);
 
-    this.transferService.sendTransaction(transfer.address, transfer.message)
+    this.transferService.sendTransaction(transfer.address, transfer.message, transfer.amount)
       .then((response) => { 
         console.log('Success Transfer: ' + response);
         this._snackBar.open('送金に成功しました。', 'Close', {

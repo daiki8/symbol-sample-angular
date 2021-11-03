@@ -14,6 +14,10 @@
         <mat-label>message</mat-label>
         <input matInput name="message" [(ngModel)]="transfer.message">
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>amount</mat-label>
+        <input matInput name="amount" [(ngModel)]="transfer.amount">
+      </mat-form-field>
       <button mat-raised-button color="primary">Send</button>
     </form>
   </mat-card-content>
