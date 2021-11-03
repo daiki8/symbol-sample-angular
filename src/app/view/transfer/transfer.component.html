@@ -5,10 +5,11 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form #transferForm (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-evenly none"  >
+    <form #transferForm="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-evenly none"  >
       <mat-form-field appearance="fill">
         <mat-label>address</mat-label>
-        <input matInput name="address" [(ngModel)]="transfer.address">
+        <input matInput #address="ngModel" name="address" [(ngModel)]="transfer.address" required>
+        <mat-error *ngIf="address.errors?.required">address is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>message</mat-label>
@@ -16,9 +17,13 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>amount</mat-label>
-        <input matInput name="amount" [(ngModel)]="transfer.amount">
+        <input matInput #amount="ngModel" name="amount" [(ngModel)]="transfer.amount" type="number" min="0" required>
+        <mat-error *ngIf="amount.errors?.required">amount is required</mat-error>
+        <mat-error *ngIf="amount.errors?.min">invalid value</mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Send</button>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="amount.invalid">Send</button>
+      </mat-card-actions>
     </form>
   </mat-card-content>
 </mat-card>
