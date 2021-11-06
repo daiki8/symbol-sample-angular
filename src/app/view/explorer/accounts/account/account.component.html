@@ -15,6 +15,7 @@
           <mat-list-item>Public Key:</mat-list-item>
           <mat-list-item>Importance:</mat-list-item>
           <mat-list-item>Mosaics:</mat-list-item>
+          <mat-list-item >Multisig:</mat-list-item>
         </mat-list>
         <mat-list>
           <mat-list-item>{{account.address}}</mat-list-item>
@@ -35,6 +36,11 @@
                 </ng-container>
               </div>
             </div>
+          </mat-list-item>
+          <mat-list-item *ngIf="multisigAccount$ | async as multisigAccount">
+            <div mat-line>this is multisig account.</div>
+            <div mat-line>{{multisigAccount.minApproval}} of {{multisigAccount.cosignatoryAdressNum}} co-signatures required for approving transactions</div>
+            <div mat-line>{{multisigAccount.minRemoval}} of {{multisigAccount.cosignatoryAdressNum}} co-signatures required for removing cosignatories</div>
           </mat-list-item>
         </mat-list>
       </mat-card-content>

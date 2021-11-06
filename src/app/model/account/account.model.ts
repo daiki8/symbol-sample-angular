@@ -8,6 +8,14 @@ export type Account = {
   importanceMicroXym: bigint;
 }
 
+export type MultisigAccount = {
+    address: string;
+    cosignatoryAddresses: string[];
+    cosignatoryAdressNum: number;
+    minApproval: number;
+    minRemoval: number;
+}
+
 export type Wallet = {
   address: string;
   publicKey: string;

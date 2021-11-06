@@ -5,9 +5,9 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { Account } from 'src/app/model/account/account.model';
+import { Account, MultisigAccount } from 'src/app/model/account/account.model';
 import { AccountService } from 'src/app/model/account/account.service';
 
 @Component({
@@ -18,6 +18,7 @@ import { AccountService } from 'src/app/model/account/account.service';
 export class AccountComponent implements OnInit {
   address$?: Observable<string>;
   account$?: Observable<Account>;
+  multisigAccount$?: Observable<MultisigAccount>;
   snackBarHorizontalPosition: MatSnackBarHorizontalPosition = 'center';
   snackBarVerticalPosition: MatSnackBarVerticalPosition = 'top';
   
@@ -38,5 +39,22 @@ export class AccountComponent implements OnInit {
         throw new Error(error);
       })
     );
+
+    this.multisigAccount$ = this.address$.pipe(
+      mergeMap((address): Observable<MultisigAccount> => {
+        return this.accountService.getMultisigAccount$(address);
+      }),
+      catchError(
+        this.handleError<MultisigAccount>()
+      )
+    );
+    console.log(this.multisigAccount$);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }

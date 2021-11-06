@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as symbolSdk from 'symbol-sdk';
 import { environment } from 'src/environments/environment';
-import { Account, Wallet } from './account.model';
+import { Account, MultisigAccount, Wallet } from './account.model';
 import { InterfaceAccountInfrastructureService } from './account.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MultisigAccountGraphInfo } from 'symbol-sdk';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class AccountInfrastructureService implements InterfaceAccountInfrastruct
   private accountHttp = this.repositoryFactoryHttp.createAccountRepository();
   private accountInfo$?: Observable<symbolSdk.AccountInfo>;
   private account$?: Observable<Account>;
-  private wallet?: Wallet;
+  private multisigHttp = this.repositoryFactoryHttp.createMultisigRepository();
+  private multisigAccountInfo$?: Observable<symbolSdk.MultisigAccountInfo>;
+  private multisigAccount$?: Observable<MultisigAccount>;
 
   constructor() { }
 
@@ -39,6 +42,26 @@ export class AccountInfrastructureService implements InterfaceAccountInfrastruct
       })
     );
     return this.account$;
+  }
+
+  getMultisigAccount$(address: string): Observable<MultisigAccount> {
+    const symbolSdkAddress = symbolSdk.Address.createFromRawAddress(address);
+    this.multisigAccountInfo$ = this.multisigHttp.getMultisigAccountInfo(symbolSdkAddress);
+    this.multisigAccount$ = this.multisigAccountInfo$.pipe(
+      map((multisigAccountInfo) => {
+        const multisigAccount: MultisigAccount = {
+          address: multisigAccountInfo.accountAddress.plain(),
+          cosignatoryAddresses: multisigAccountInfo.cosignatoryAddresses.map((cosignatoryAddress) => {
+            return cosignatoryAddress.plain();
+          }),
+          minApproval: multisigAccountInfo.minApproval,
+          minRemoval: multisigAccountInfo.minRemoval,
+          cosignatoryAdressNum: multisigAccountInfo.cosignatoryAddresses.length,
+        }
+        return multisigAccount;
+      })
+    );
+    return this.multisigAccount$;
   }
 
   createWallet(): Wallet {
