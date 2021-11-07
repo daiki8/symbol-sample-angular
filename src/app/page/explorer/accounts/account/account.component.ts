@@ -53,7 +53,7 @@ export class AccountComponent implements OnInit {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      // console.error(error);
       return of(result as T);
     };
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Wallet } from 'src/app/model/account/account.model';
 
 @Component({
@@ -8,9 +8,14 @@ import { Wallet } from 'src/app/model/account/account.model';
 })
 export class ViewHomeComponent implements OnInit {
   @Input() wallet?: Wallet;
+  @Output() generateWallet = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onGenerate(): void {
+    console.log('aaaaaaa');
+    this.generateWallet.emit();
+  }
 }

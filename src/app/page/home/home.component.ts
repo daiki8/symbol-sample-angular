@@ -16,4 +16,9 @@ export class HomeComponent implements OnInit {
     console.log(this.wallet.address);
   }
 
+  generateWallet(): void {
+    console.log('aaaddd');
+    this.wallet = this.accountService.createWallet();
+  }
+
 }
