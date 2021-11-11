@@ -24,7 +24,9 @@ import { ViewHomeComponent } from './view/home/home.component';
 import { AccountComponent } from './page/explorer/accounts/account/account.component'; 
 import { ViewAccountComponent } from './view/explorer/accounts/account/account.component';
 import { TransferComponent } from './page/transfer/transfer.component'; 
-import { ViewTransferComponent } from './view/transfer/transfer.component'; 
+import { ViewTransferComponent } from './view/transfer/transfer.component';
+import { LoginComponent } from './page/login/login.component'; 
+import { ViewLoginComponent } from './view/login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ViewTransferComponent } from './view/transfer/transfer.component';
     ViewAccountComponent,
     TransferComponent,
     ViewTransferComponent,
+    LoginComponent,
+    ViewLoginComponent,
   ],
   imports: [
     BrowserModule,
