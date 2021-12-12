@@ -6,8 +6,9 @@ export const environment = {
   // nodeUrl: 'http://symbol-sakura-16.next-web-technology.com:3000', // mainnet
   nodeUrl: 'https://sym-test.opening-line.jp:3001',                   // testnet
   samplePrivateKey: '8E273B0E9C7DA98293D38B130B6B27505B6E2785261CBEAD649F34EF7EA04F90',
-  sampleTargetAddress: 'TCLQ3QKUFV6I35FVDXVMB7X4CWI3FLAOVQGNKCQ', // faucet address
-  epochAdjustment: 1637848847,
+  faucetAddress: 'TDMYLKCTEVPSRPTG4UXW47IQPCYNLW2OVWZMLGY', // faucet address
+  generationHash: '7FCCD304802016BEBBCD342A332F91FF1F3BB5E902988B352697BE245F48E836', // testnet
+  epochAdjustment: 1637848847, //testnet
 };
 
 /*

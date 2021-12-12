@@ -9,7 +9,7 @@ import { Transfer } from 'src/app/model/transaction/transfer/transfer.model';
   styleUrls: ['./transfer.component.css']
 })
 export class ViewTransferComponent implements OnInit {
-  transfer: Transfer = { address: environment.sampleTargetAddress, message: '', amount: 1 };
+  transfer: Transfer = { address: environment.faucetAddress, message: '', amount: 1 };
   @Output() send = new EventEmitter<Transfer>();
 
   constructor() { }
